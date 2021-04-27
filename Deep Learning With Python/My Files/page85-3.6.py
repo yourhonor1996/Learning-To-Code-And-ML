@@ -38,21 +38,22 @@ for i in range(k):
     
     partial_train_data = np.concatenate(
         [train_data[: i*num_val_samples] , train_data[(i+1)*num_val_samples : ]],
-        axis=0
-    )
+        axis=0)
     partial_train_targets = np.concatenate(
-        [[train_targets[: i*num_val_samples] , train_targets[(i+1)*num_val_samples : ]]],
-        axis=0
-    )
-    partial_train_data = np.asarray(partial_train_data).astype('float32')
-    partial_train_targets = np.asarray(partial_train_targets).astype('float32')
-    val_data = np.asarray(val_data).astype('float32')
-    val_targets = np.asarray(val_targets).astype('float32')
+        [train_targets[: i*num_val_samples] , train_targets[(i+1)*num_val_samples : ]],
+        axis=0)
+    
+    partial_train_data = np.asfarray(partial_train_data)
+    partial_train_targets = np.asfarray(partial_train_targets)
+    val_data = np.asfarray(val_data)
+    val_targets = np.asfarray(val_targets)
     
     model = build_model()
     model.fit(partial_train_data, partial_train_targets, 
               epochs=num_epochs, batch_size=1, verbose=0)
-    val_mse, val_mae = model.evaluate(val_data, val_targets, verbose=0)
-    all_scores.append(val_mae)
+    metrics_all = model.evaluate(val_data, val_targets, verbose=0)
+    all_scores.append(metrics_all)
     
+# %%
+all_scores
 # %%
