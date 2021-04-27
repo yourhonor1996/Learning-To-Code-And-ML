@@ -9,7 +9,7 @@ For example, the string "This website is for losers LOL!" would become "Ths wbst
 Note: for this kata y isn't considered a vowel.'''
 
 def disemvowel(string:str):
-    vowels = ['a','e','o','u']
+    vowels = ['a','e','i','o','u']
     all_vowels = vowels.copy()
     all_vowels.extend(i.capitalize() for i in vowels)
     l = []
