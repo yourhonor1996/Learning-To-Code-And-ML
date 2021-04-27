@@ -1,5 +1,6 @@
 #%%
-import keras
+# import keras
+from tensorflow import keras
 from keras.datasets import boston_housing
 (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
 # %%
@@ -13,7 +14,6 @@ test_data /= std
 # %%
 from keras import models 
 from keras import layers 
-
 # %%
 def build_model():
     model = models.Sequential()

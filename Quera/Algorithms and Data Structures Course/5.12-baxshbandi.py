@@ -1,25 +1,20 @@
 import copy
+from itertools import combinations
+
 notneeded = input()
 Set = [int(item) for item in input().split()]
 n = len(Set)
 
+combs = []
+for i in range(1,n):
+    for item in combinations(Set, i):
+        combs.append(list(item))
 
-result = []
-for mask in range(1<<n):
-    temp = []
-    for i in range(n):
-        if mask & (1<<i):
-            temp.append(Set[i])
-    result.append(temp)
+minimum = sumset = sum(Set)
+for item in combs:
+    mini_sum = abs(sumset - 2*sum(item))
+    if( mini_sum < minimum):
+        minimum = copy.deepcopy(mini_sum)
 
-sums = [sum(item) for item in result]
-length = len(sums)
-minimum = abs(sums[0]-sums[-1])
-for j in range(length):
-    for k in range(j+1, length):
-        tempmin = abs(sums[k] - sums[j])
-        if(tempmin < minimum):
-            minimum = copy.deepcopy(tempmin)
-# print(result)
-# print(sums)
 print(minimum)
+# print(combs)
