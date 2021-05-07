@@ -1,5 +1,13 @@
 import math
 
+class Consts:
+    BASE_PRICE = {'worker': 200, 'teacher': 150, 'engineer': 250}
+    BASE_COST = {'worker': 200, 'teacher': 150, 'engineer': 300}
+    BASE_INCOME = {'worker': {'mine': 800, 'school': 500, 'company': 600},
+                   'teacher': {'mine': 400, 'school': 900, 'company': 700},
+                   'engineer': {'mine': 1000, 'school': 800, 'company': 900}}
+    MIN_AGE = 5
+    AGE_MUL = 5
 
 class Person:
     instances = []
