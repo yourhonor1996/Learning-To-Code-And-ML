@@ -1,3 +1,8 @@
+#%%
 import datetime
 import calendar
-calendar.
+#%%
+!pip install django
+# %%
+
+# %%

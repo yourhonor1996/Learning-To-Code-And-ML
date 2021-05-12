@@ -5,6 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 %matplotlib inline
+
+figSize = (14,6)
 # %%
 x = np.arange(-10, 11)
 
@@ -133,4 +135,42 @@ plt.scatter(x, y, s=area, c=colors, alpha=0.5, cmap='Pastel2')
 plt.colorbar()
 # %%
 fig
+# %%
+values = np.random.randn(1000)
+
+fig, ax = plt.subplots(figsize = figSize)
+ax.hist(values, bins= 100, alpha= 0.8,
+        histtype= 'barstacked', color= 'steelblue',
+        edgecolor= 'green', cumulative= True)
+ax.set_xlim(xmin= -5, xmax= 5)
+
+# %%
+np.random.randn?
+
+# %%
+from scipy import stats
+
+density = stats.kde.gaussian_kde(values)
+density
+# %%
+plt.subplots(figsize= figSize)
+
+values2 = np.linspace(min(values) - 10, max(values) + 10, 100)
+
+plt.plot(values2, density(values2), color= '#FF7F00')
+plt.fill_between(values2, 0, density(values2), alpha= 0.5, color= '#FF7F00')
+plt.xlim(xmin= -5, xmax= 5)
+
+plt.show()
+
+# %%
+plt.subplots(figsize=(12, 6))
+
+values2 = np.linspace(min(values)-10, max(values)+10, 100)
+
+plt.plot(values2, density(values2), color= '#FF7F00')
+plt.fill_between(values2, 0, density(values2), alpha= 0.5, color='#FF7F00')
+plt.xlim(xmin=-5, xmax=5)
+
+plt.show()
 # %%
