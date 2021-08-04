@@ -1,1 +1,0 @@
-print(' '.join([str(item) for i, item in enumerate([int(num) for num in input().split()]) if (item%6 == 0 and (i+1)%6 == 0)]))
